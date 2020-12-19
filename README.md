@@ -6,7 +6,6 @@ The aim of the project is to see if given data of players in the NBA and their s
 
 https://nba-predictions-flask.herokuapp.com/ is the deployed Heroku site.
 PLEASE NOTE: The site may take some time to load. Because there are 2 packages used for models. Once stored in cache, should load faster.
-![](static/images/site.jpg)
 
 ## Notebooks and Prep Work:
 Data-Cleanup.ipynb. includes how ETL was done from the dataset, and that resulting csv was uploaded to s3.SVM_Model.ipynb, Random_Forest_Model.ipynb, and Deep_Learning_Model.ipynb are all where the training and saving of models are done, named accordingly. These notebooks also show how the s3 data is received.
