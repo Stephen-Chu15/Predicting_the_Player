@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<!--
+	Iconic by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Predictions</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header Wrapper -->
+				<div id="header-wrapper">
+
+					<!-- Header -->
+						<div id="header" class="container">
+
+							<!-- Logo -->
+								<h1><a href="/" id="logo">NBA Efficiency Predictions</a></h1>
+
+							<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="/">Home</a></li>
+									<li><a href="/overview">Project Overview</a></li>
+									<li><a href="/data">Data Exploration</a></li>
+									<li><a href="/model">Model Overview</a></li>
+									<li><a href="/predict">Predict Player</a></li>
+								</ul>
+							</nav>
+
+						</div>
+
+				</div>
+
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+					<!-- Main -->
+						<div id="page" class="container">
+
+							<!-- Main Heading -->
+								<div class="title-heading">
+									<h2>Predict Player</h2>
+									<p>Output a Category of Player Based on Decades of Data</p>
+								</div>
+
+							<!-- Main Content -->
+								<div id="main">
+									<div class="row">
+										<div id="content" class="col-12">
+											<header>
+												<h2>Enter Potential Player Statistics Below</h2>
+												<form action="{{ url_for('predictinput')}}"method="POST">
+													  <input type="text" name="PPG" placeholder="PPG" required="required" /><br>
+													  <input type="text" name="APG" placeholder="APG" required="required" /><br>
+													  <input type="text" name="RPG" placeholder="RPG" required="required" /><br>
+													  <input type="text" name="SPG" placeholder="SPG" required="required" /><br>
+													  <input type="text" name="BPG" placeholder="BPG" required="required" /><br>
+													  <input type="text" name="FGP" placeholder="FG% (out of 100)" required="required" /><br>
+													  <input type="text" name="FTP" placeholder="FT% (out of 100)" required="required" /><br>
+													  <input type="text" name="3PP" placeholder="3P% (out of 100)" required="required" /><br>
+													  <label for="models">Click the box below to change the model to predict with: </label>
+													  <select name = "models" id = "models">
+														  <option value = "Deep Learning">Deep Learning</option>
+														  <option value = "Random Forest Classification">Random Forest Classification</option>
+														  <option value = "SVM">SVM</option>
+													
+													  </select>
+													  <button type="submit" style="height:50px;width:200px">Predict</button>
+
+												</form>
+												
+											  
+												 <br>
+												 <br>
+												
+												 
+											   </div>
+											   <h3>
+											<u>{{prediction}}</u>
+												<br>
+											   For these stats:
+												<br>
+											   {{PPG}}
+											   <br>
+											   {{APG}}
+											   <br>
+											   {{RPG}}
+											   <br>
+											   {{SPG}}
+											   <br>
+											   {{BPG}}
+											   <br>
+											   {{FG}}
+											   <br>
+											   {{FT}}
+											   <br>
+											   {{Three}}</h3>
+											</header>
+											
+											
+											
+										</div>
+									</div>
+								</div>
+							<!-- Main Content -->
+
+						</div>
+					<!-- Main -->
+
+				</div>
+
+			
+
+			<!-- Copyright -->
+				<div id="copyright">
+					Vishal Patel, Stephen Chu, Steve Thorne, Saburo Nakano
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>
