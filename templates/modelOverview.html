@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<!--
+	Iconic by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Model Overviews</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header Wrapper -->
+				<div id="header-wrapper">
+
+					<!-- Header -->
+						<div id="header" class="container">
+
+							<!-- Logo -->
+								<h1><a href="/" id="logo">NBA Efficiency Predictions</a></h1>
+
+							<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="/">Home</a></li>
+									<li><a href="/overview">Project Overview</a></li>
+									<li><a href="/data">Data Exploration</a></li>
+									<li><a href="/model">Model Overview</a></li>
+									<li><a href="/predict">Predict Player</a></li>
+								</ul>
+							</nav>
+
+						</div>
+
+				</div>
+
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+					<!-- Main -->
+						<div id="page" class="container">
+
+							<!-- Main Heading -->
+								<div class="title-heading">
+									<h2>Machine Learning Analysis</h2>
+									<p>Explanation and technical details of Machine Learning models used</p>
+								</div>
+
+							<!-- Main Content -->
+								<div id="main">
+									<div class="row">
+										<div id="content" class="col-12">
+											<header>
+												<h2>Model Overviews:</h2>
+												<div style="text-align: center;">
+												</div>
+							   
+											</header>
+											
+											<p> 
+                                            For each of the models listed below we assigned our target value (y) as NBA PER Range. This was not originally part of the dataset, rather created by our team by binning
+                                            specific PER ranges in order to determine the caliber of each player. As mentioned previously, this was inspired by John Hollinger's PER Range which he created in order to
+                                            combine all of the player's contributions into one statistical category. Although there is a specific and complicated formula for this, our model is designed to predict based off the most popular
+                                            statistical categories that most people are familiar with. This includes: PPG, APG, RPG, SPG, BPG, FG%, FT%, 3P%.
+                                            </p>
+                                            
+                                            <h3>Random Forest Model</h3>
+
+											<p>
+                                            First model we created was a random forest model for the purpose of seeing how each of the data values impacted our category distribution. After assigning the data and targets, we split the data into two testing samples
+                                            and then scaled the data in using a MinMaxScalar in order to normalize the range of variables that will be pased through the model. If you take a look below, you will see the break down of how each data impacts this particular model
+                                            and what is important to in order for our machine to predict the classifiers of PER Range
+                                            </p>
+
+                                            <img src = "../static/images/weighted_values.JPG">
+
+                                            <h3>SVM Model</h3>
+                                            
+                                            <p> 
+                                            Using those same target and data values from the random forest model, we applied this to a SVM model in order to see how precise each category can be predicted. After calibrating our SVM model, our team applied
+                                            a hyperparameter tuning component (GridSearchCV) in order to ensure that our model was performing at the highest possible degree. Once the newer model was trained and fit we calculated a classification report and received
+                                            a precision measurement and support variable that demonstrated how well our model could predict each NBA PER Range as well as the the number of units per category respectively.
+                                            </p>
+                                            
+                                            <img src = "../static/images/classification_report.JPG">
+
+                                            <h3>Deep Learning Model</h3>
+                                            
+                                            <p>
+                                            Finally, we created a Deep Learning model in order to test how accurately our machine could predict each category and manage the loss of the model. In order to make sure that our data would be able to pass through our machine,
+                                            this required a label encoder to transform our NBA PER Ranges into a numeric value. After doing so, we passed in our 8 input dimensions and used 100 hidden layers in order to train the model and receive the output layer. 
+                                            Finally, we examined the loss and accuracy of the deep learning model and found that this model had the highest accuracy of 84% out of the three models tested.
+                                            </p>
+
+                                            <img src = "../static/images/DeepLearningModelOverview.jpg">
+
+										</div>
+									</div>
+								</div>
+							<!-- Main Content -->
+
+						</div>
+					<!-- Main -->
+
+				</div>
+
+			
+
+			<!-- Copyright -->
+				<div id="copyright">
+					Vishal Patel, Stephen Chu, Steve Thorne, Saburo Nakano
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>
