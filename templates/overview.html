@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<!--
+	Iconic by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Project Overview</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header Wrapper -->
+				<div id="header-wrapper">
+
+					<!-- Header -->
+						<div id="header" class="container">
+
+							<!-- Logo -->
+								<h1><a href="/" id="logo">NBA Efficiency Predictions</a></h1>
+
+							<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="/">Home</a></li>
+									<li><a href="/overview">Project Overview</a></li>
+									<li><a href="/data">Data Exploration</a></li>
+									<li><a href="/model">Model Overview</a></li>
+									<li><a href="/predict">Predict Player</a></li>
+								</ul>
+							</nav>
+
+						</div>
+
+				</div>
+
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+					<!-- Main -->
+						<div id="page" class="container">
+
+							<!-- Main Heading -->
+								<div class="title-heading">
+									<h2>Project Overview</h2>
+									<p>Inspirations, uses, and technical aspects of the projct</p>
+								</div>
+
+							<!-- Main Content -->
+								<div id="main">
+									<div class="row">
+										<div id="content" class="col-12">
+											<header>
+												<h2>Machine Learning in the Context of Predicting NBA Efficiency </h2>
+												<div style="text-align: center;">
+												<img src = "../static/images/titleImage.png" alt="title image">
+												</div>
+											  
+												 <br>
+												 <br>
+												
+												 
+											   
+											</header>
+											
+											<p>The project we've chosen is about the NBA, and how specific stats can determine how efficient and impactful
+												someone is in the leage. Throughout the history of the NBA, players have been always able to record massive numbers,
+												and yet aren't considered the same level as the top players, such as Michael Jordan, Patrick Ewing, Kevin Durant. Why is that? What makes a
+												player just a starter, compared to all stars? What about MVP candidates? What kind of stats and production is needed for that?
+											</p>
+
+											<p>The way we plan on answering these questions is through machine learning, specifically through 3 models. The end goal of these models is to find a way to predict
+												the efficiency and impact of a player based on given stats. And to do this, we used decades of data.
+
+												This dataset from Kaggle(https://www.kaggle.com/drgilermo/nba-players-stats) contains player data from the 1950s, for each player in each season. By including these stats, we are able 
+												to train 3 different models, and output a classification of PER, or player efficiency rating.
+
+											</p>
+											<h3>Steps for the Project</h3>
+											<ol>
+												<li>Transform the data from Kaggle This includes filtering out data to only include 1990s data to keep the training data accurate. A lot of older players have misrecorded or no stats.</li>
+												<li>Clean up the Nan values from the data, changing them to 0.</li>
+												<li>Upload data to Amazon S3 for retrieval.</li>
+												<li>Using Python notebooks, retreive data from S3, train 3 different models, Random Forest, Support Vector Machine, and Deep Learning, save models.</li>
+												<li>Develop Flask app, hosting application on Heroku.</li>
+											</ol>
+											</p>
+											
+										</div>
+									</div>
+								</div>
+							<!-- Main Content -->
+
+						</div>
+					<!-- Main -->
+
+				</div>
+
+			
+
+			<!-- Copyright -->
+				<div id="copyright">
+					Vishal Patel, Stephen Chu, Steve Thorne, Saburo Nakano
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>
