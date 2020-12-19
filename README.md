@@ -5,6 +5,7 @@
 The aim of the project is to see if given data of players in the NBA and their stats, could we determine the type of success a player will have in the NBA based on PER, or player efficiency  rating. To do this, we took the data, found here: https://www.kaggle.com/drgilermo/nba-players-stats and filtered and transformed it. To view that, look at Data-Cleanup.ipynb. The resulting csv was then stored in Amazon S3, not included locally in the Github repo. Then using 3 machine learning models, Random Forest Classification, Support Vector Machine, and Deep Learning, we were able to create 3 models to choose from that predicts player efficiency based on inputted stats. We used Random Forest from sklearn, SVM from sklearn, and finall Deep Learning from Tensorflow. All included in the predict page of the application.
 
 https://nba-predictions-flask.herokuapp.com/ is the deployed Heroku site.
+
 PLEASE NOTE: The site may take some time to load. Because there are 2 packages used for models. Once stored in cache, should load faster.
 
 ## Notebooks and Prep Work:
