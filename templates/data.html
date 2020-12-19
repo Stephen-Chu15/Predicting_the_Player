@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<!--
+	Iconic by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
+-->
+<html>
+	<head>
+		<title>Predictions</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header Wrapper -->
+				<div id="header-wrapper">
+
+					<!-- Header -->
+						<div id="header" class="container">
+
+							<!-- Logo -->
+								<h1><a href="/" id="logo">NBA Efficiency Predictions</a></h1>
+
+							<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="/">Home</a></li>
+									<li><a href="/overview">Project Overview</a></li>
+									<li><a href="/data">Data Exploration</a></li>
+									<li><a href="/model">Model Overview</a></li>
+									<li><a href="/predict">Predict Player</a></li>
+								</ul>
+							</nav>
+
+						</div>
+
+				</div>
+
+			<!-- Main Wrapper -->
+				<div id="main-wrapper">
+
+					<!-- Main -->
+						<div id="page" class="container">
+
+							<!-- Main Heading -->
+								<div class="title-heading">
+									<h2>Exploring Data</h2>
+									<p>Looking at the Data per player type and trends as a whole</p>
+								</div>
+
+							<!-- Main Content -->
+								<div id="main">
+									<div class="row">
+										<div id="content" class="col-12">
+											<header>
+												<h2>Looking at Numeric Data</h2>
+												
+											</header>
+											<p>The dataset included contained more than 30,000 rows of data, starting from the 1950s. Each row representing a player's season. In order to make sure that we are looking at PER, however
+												the team decided to only include players from the modern era, from the 1990s. This also helps when it comes to predicting a player, as we use more modern data.
+											</p>
+											<p>Each player contains basic statistics one would find for most NBA games, including Points, Rebounds, Assists, Field Goal Percentage, 3 Point Percentage, Blocks and more,
+												however to predict the efficiency of each player, each player also comes with a stat from the dataset called PER.
+											</p>
+											<h3>PER and how its used in this project</h3>
+											<p>The way data is categorized for this project is based on the calculated PER, or player efficiency rating. This is calculated from multiple different stats, invented by John Hollinger. </p>
+											<p>After calculation, a decimal value is outputted, and represents a culmination of different stats and advanced stats, however, Hollinger, the inventor of the stat, also included some labels for the outputted PER as well:</p>
+											<img src = "../static/images/PERcategories.jpg" alt = "PER Ranges">
+											<figcaption>PER Ranges and their Categories</figcaption>
+
+											<br></br>
+
+											<p>For the purposes of the project, we have decided to reduce these categories to 4, in order to get a more accurate model. Below, you will find an application that allows you to select a category we created, and some average stats
+												that are associated with it. </p>
+											
+											<label for="pname">Click the box to select a player type:</label>
+											<select name = "categories" id = "categories">
+												<option value = "End of the Bench">End of Bench Player</option>
+												<option value = "Starter">Starter</option>
+												<option value = "All-Star">All-Star</option>
+												<option value = "MVP candidate">MVP Candidate</option>
+											</select>
+											<br>
+											</br>
+											<button id="filter-btn" type="button" class="btn btn-default">Get Averages for Player Type</button>
+											<table>
+												<thead>
+												  <tr>
+													<th id = "chosenPlayer">Number of Players:</th>
+												  </tr>
+												</thead>
+												<tbody>
+													<tr>
+													<td id = "PPG">PPG</td>
+													<td id = "NBAPPG">-</td>
+													</tr>
+													<tr>
+													<td id = "APG">APG</td>
+													<td id = "NBAAPG">-</td>
+													</tr>
+													<tr>
+													<td id = "RPG">RPG</td>
+													<td id = "NBARPG">-</td>
+													</tr>
+													<tr>
+													<td id = "FG">FG%</td>
+													<td id = "NBAFG">-</td>
+													</tr>
+													<tr>
+													<td id = "3P">3P%</td>
+													<td id = "NBA3P">-</td>
+													</tr>
+													<tr>
+													<td id = "FT">FT%</td>
+													<td id = "NBAFT">-</td>
+													</tr>
+												</tbody>
+											  </table>
+									
+											<p>As seen with the different categories of PER, the most noticeable change is the increase of PPG, or points per game. Also notice how small of a number of players
+												there are when it comes to all star and mvp. For decades now, having an efficiency of a MVP level player is rare and takes a lot to achieve.
+											</p>
+
+											<h2>Looking at trends through graphs/charts</h2>
+											<iframe width="1100px" height="1100px" src="https://public.tableau.com/views/Project3_16058492462040/NBAPER?:language=en&:display_count=y&:origin=viz_share_link&:showVizHome=no"></iframe>
+										</div>
+									</div>
+								</div>
+							<!-- Main Content -->
+
+						</div>
+					<!-- Main -->
+
+				</div>
+
+			
+
+			<!-- Copyright -->
+				<div id="copyright">
+					Vishal Patel, Stephen Chu, Steve Thorne, Saburo Nakano
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+			<script>
+				var button = d3.select("#filter-btn");
+				button.on("click", runForm);
+
+				function runForm(){
+					d3.event.preventDefault();
+					var input_selected = d3.select("#categories")
+					var category_filter = input_selected.property("value")
+					d3.json("/NBAData", function(nba_data){
+						var filteredNBA = nba_data.filter(playername => playername.NBA_PER_Range == category_filter)
+						var total_PPG = 0
+						var total_APG = 0
+						var total_RPG = 0
+						var total_FGP = 0
+						var total_3PG = 0
+						var total_FT = 0
+						for(i = 0; i < filteredNBA.length; i++){
+							total_PPG = total_PPG + filteredNBA[i].PPG
+							total_APG = total_APG + filteredNBA[i].APG
+							total_RPG = total_RPG + filteredNBA[i].RPG
+							total_FGP = total_FGP + filteredNBA[i]['FG%']
+							total_3PG = total_3PG + filteredNBA[i]['3P%']
+							total_FT = total_FT + filteredNBA[i]['FT%']
+						}
+						number_of_items = filteredNBA.length
+						var PPG = d3.select("#NBAPPG").text(total_PPG/number_of_items)
+						var APG = d3.select("#NBAAPG").text(total_APG/number_of_items)
+						var RPG = d3.select("#NBARPG").text(total_RPG/number_of_items)
+						var FGP = d3.select("#NBAFG").text(total_FGP/number_of_items)
+						var ThreePP = d3.select("#NBA3P").text(total_3PG/number_of_items)
+						var FTP = d3.select("#NBAFT").text(total_FT/number_of_items)
+						var num_of_players = d3.select("#chosenPlayer").text(`${number_of_items} included in ${category_filter}`)
+
+
+
+				})
+				}	
+			</script>
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.dropotron.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>
