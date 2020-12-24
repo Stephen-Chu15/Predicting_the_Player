@@ -30,4 +30,4 @@ found: https://www.kdnuggets.com/2020/05/build-deploy-machine-learning-web-app.h
 
 (/NBAData) is a route that reads the data from S3. Then it jsonifies it, and returns the json. Used in the data page.
 
-### Vishal Patel, Stephen Chu, Saburo Nakano, Steve Thorne
+### Stephen Chu, Vishal Patel, Saburo Nakano, and Steve Thorne
