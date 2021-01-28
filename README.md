@@ -5,12 +5,15 @@ The aim of the project is to see if given data of players in the NBA and their s
 
 https://nba-predictions-flask.herokuapp.com/ is the deployed Heroku site.
 
+![](images/site.jpg)
+
 PLEASE NOTE: The site may take some time to load. Because there are 2 packages used for models. Once stored in cache, should load faster.
 
 ## Notebooks and Prep Work:
 Data-Cleanup.ipynb. includes how ETL was done from the dataset, and that resulting csv was uploaded to s3.SVM_Model.ipynb, Random_Forest_Model.ipynb, and Deep_Learning_Model.ipynb are all where the training and saving of models are done, named accordingly. These notebooks also show how the s3 data is received.
 Finally the models are saved as Random_Forest_Model.sav, SVM_Model.sav, and Deep_Learning_Model.h5. 
 
+![](images/deep_learning.jpg)
 
 
 ## Flask Routes:
@@ -29,5 +32,8 @@ found: https://www.kdnuggets.com/2020/05/build-deploy-machine-learning-web-app.h
 (/model) leads to the modelOverview.html model overview page. This page explains all 3 of the models in detail, and compares each one.
 
 (/NBAData) is a route that reads the data from S3. Then it jsonifies it, and returns the json. Used in the data page.
+
+![](images/flask.jpg)
+
 
 ### Stephen Chu, Vishal Patel, Saburo Nakano, and Steve Thorne
